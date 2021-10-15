@@ -1,6 +1,8 @@
 issue https://github.com/etcd-io/etcd/issues/13406
 ======
 # Issue
+etcd version: 3.5.
+
 After restarting from a zfs snapshot rollback, the etcd failed to get started, and the stack trace is as below,
 ```
 unexpected fault address 0x7f31a61db000                                                                              

@@ -1,6 +1,8 @@
 issue https://github.com/etcd-io/etcd/issues/13418
 ======
 # Issue 
+etcd version: 3.5.
+
 When programmatically constructing an etcd cluster of two members, the leader receives a rejected MsgAppResp from the follower. 
 
 The error log from the follower side is: 
