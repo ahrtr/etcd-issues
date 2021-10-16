@@ -56,6 +56,8 @@ created by go.etcd.io/etcd/server/v3/etcdserver.openBackend
         /etcd/server/etcdserver/backend.go:75 +0x12b                   
 ```
 
+The file 'db' is the corrupted file.
+
 # Root cause & Solution
 The reason of the issue is that the db file is corrupted. The file size is 2527232 bytes, and the pageSize in meta is 4096, so there are 617 (2527232/4096) pages in total. But the pgid value in meta page is 1706, which is out of range.
 There are also some invalid entries in the B-tree internal nodes as well.
