@@ -118,8 +118,10 @@ func newNode(newCluster bool, ids ...uint64) *node {
 	node := new(node)
 	node.mem = mem
 	if newCluster {
+		// create a new cluster
 		node.rn = raft.StartNode(cfg, peers)
 	} else {
+		// join an existing cluster
 		node.rn = raft.RestartNode(cfg)
 	}
 	node.tr = new(transport)
