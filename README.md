@@ -10,3 +10,4 @@ This repo contains analysis of various etcd issues from etcd community. The purp
 | **[13406](13406)** |  SIGBUS on startup in etcd-3.5.0 after filesystem rollback | 2021-10-08 | 3.5 |
 | **[13418](13418)** |  etcd/raft: leader and follower stuck on reject/hint msgs  | 2021-10-15 | 3.5 |
 | **[13415](13415)** |  Kubelet liveness probe restarts etcd when auth is enabled  | 2021-10-13 | 3.5 |
+| **[13466](13466)** |  etcd panic on startup with error message "unexpected removal of unknown remote peer"   | 2021-11-19 | 3.5.0 |
