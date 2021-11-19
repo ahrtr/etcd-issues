@@ -1,9 +1,7 @@
 issue https://github.com/etcd-io/etcd/issues/13466
 ======
-# Issue
-etcd version: 3.5.0.
-
 ## Steps to reproduce this issue
+The steps are performed on etcd version **3.5.0**.
 1. Create a new cluster with 3 members, add the option "--snapshot-count 10" for each instance on startup. 
 2. Add 15 keys using a command below,
 ```
