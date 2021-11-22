@@ -12,5 +12,6 @@ This repo contains analysis of various etcd issues from etcd community. The purp
 | **[13415](13415)** |  Kubelet liveness probe restarts etcd when auth is enabled  | 2021-10-13 | 3.5 | |
 | **[13466](13466)** |  etcd panic on startup with error message "unexpected removal of unknown remote peer"   | 2021-11-19 | 3.5.0 | |
 | **[13480](13480)** |  Unable to specify time.Duration types in etcd config file   | 2021-11-20 | N/A | |
+| **[13196](13196)** |  etcd 3.5.0 resurrects ancient (unremovable) members  | 2021-11-22 | 3.5.0 | Workaround fix in 3.5.1, [pull/13348](https://github.com/etcd-io/etcd/pull/13348); <br />Formal fix will be available in 3.5.2; <br />3.6 will deprecate the v2store.|
 
 
