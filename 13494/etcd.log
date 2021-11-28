@@ -1,0 +1,54 @@
+{"level":"info","ts":"2021-11-11T05:00:20.611Z","caller":"etcdmain/etcd.go:72","msg":"Running: ","args":["etcd","--advertise-client-urls=https://10.129.104.104:2379","--cert-file=/etc/kubernetes/pki/etcd/server.crt","--client-cert-auth=true","--data-dir=/var/lib/etcd","--initial-advertise-peer-urls=https://10.129.104.104:2380","--initial-cluster=kube-general-sg2-test-10-129-104-104-node1=https://10.129.104.104:2380,10.129.104.107=https://10.129.104.107:2380,10.129.104.71=https://10.129.104.71:2380","--initial-cluster-state=existing","--key-file=/etc/kubernetes/pki/etcd/server.key","--listen-client-urls=https://127.0.0.1:2379,https://10.129.104.104:2379","--listen-metrics-urls=http://0.0.0.0:2381","--metrics=extensive","--listen-peer-urls=https://10.129.104.104:2380","--name=kube-general-sg2-test-10-129-104-104-node1","--peer-cert-file=/etc/kubernetes/pki/etcd/peer.crt","--peer-client-cert-auth=true","--peer-key-file=/etc/kubernetes/pki/etcd/peer.key","--peer-trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt","--snapshot-count=10000","--trusted-ca-file=/etc/kubernetes/pki/etcd/ca.crt","--quota-backend-bytes=8589934592"]}
+{"level":"info","ts":"2021-11-11T05:00:20.625Z","caller":"etcdmain/etcd.go:115","msg":"server has been already initialized","data-dir":"/var/lib/etcd","dir-type":"member"}
+{"level":"info","ts":"2021-11-11T05:00:20.625Z","caller":"embed/etcd.go:131","msg":"configuring peer listeners","listen-peer-urls":["https://10.129.104.104:2380"]}
+{"level":"info","ts":"2021-11-11T05:00:20.625Z","caller":"embed/etcd.go:478","msg":"starting with peer TLS","tls-info":"cert = /etc/kubernetes/pki/etcd/peer.crt, key = /etc/kubernetes/pki/etcd/peer.key, client-cert=, client-key=, trusted-ca = /etc/kubernetes/pki/etcd/ca.crt, client-cert-auth = true, crl-file = ","cipher-suites":[]}
+{"level":"info","ts":"2021-11-11T05:00:20.628Z","caller":"embed/etcd.go:139","msg":"configuring client listeners","listen-client-urls":["https://10.129.104.104:2379","https://127.0.0.1:2379"]}
+{"level":"info","ts":"2021-11-11T05:00:20.628Z","caller":"embed/etcd.go:307","msg":"starting an etcd server","etcd-version":"3.5.0","git-sha":"946a5a6f2","go-version":"go1.16.3","go-os":"linux","go-arch":"amd64","max-cpu-set":30,"max-cpu-available":30,"member-initialized":true,"name":"kube-general-sg2-test-10-129-104-104-node1","data-dir":"/var/lib/etcd","wal-dir":"","wal-dir-dedicated":"","member-dir":"/var/lib/etcd/member","force-new-cluster":false,"heartbeat-interval":"100ms","election-timeout":"1s","initial-election-tick-advance":true,"snapshot-count":10000,"snapshot-catchup-entries":5000,"initial-advertise-peer-urls":["https://10.129.104.104:2380"],"listen-peer-urls":["https://10.129.104.104:2380"],"advertise-client-urls":["https://10.129.104.104:2379"],"listen-client-urls":["https://10.129.104.104:2379","https://127.0.0.1:2379"],"listen-metrics-urls":["http://0.0.0.0:2381"],"cors":[""],"host-whitelist":[""],"initial-cluster":"","initial-cluster-state":"existing","initial-cluster-token":"","quota-size-bytes":8589934592,"pre-vote":true,"initial-corrupt-check":false,"corrupt-check-time-interval":"0s","auto-compaction-mode":"periodic","auto-compaction-retention":"0s","auto-compaction-interval":"0s","discovery-url":"","discovery-proxy":"","downgrade-check-interval":"5s"}
+{"level":"info","ts":"2021-11-11T05:00:30.629Z","caller":"etcdserver/backend.go:85","msg":"db file is flocked by another process, or taking too long","path":"/var/lib/etcd/member/snap/db","took":"10.000615924s"}
+{"level":"warn","ts":"2021-11-11T05:00:35.103Z","caller":"snap/snapshotter.go:249","msg":"found unexpected non-snap file; skipping","path":"0000000051f48a98.snap.db"}
+{"level":"info","ts":"2021-11-11T05:00:35.104Z","caller":"etcdserver/server.go:508","msg":"recovered v2 store from snapshot","snapshot-index":1374980760,"snapshot-size":"47 kB"}
+{"level":"info","ts":"2021-11-11T05:00:45.659Z","caller":"etcdserver/backend.go:85","msg":"db file is flocked by another process, or taking too long","path":"/var/lib/etcd/member/snap/db","took":"10.000319639s"}
+{"level":"info","ts":"2021-11-11T05:00:51.334Z","caller":"etcdserver/server.go:518","msg":"recovered v3 backend from snapshot","backend-size-bytes":3500089344,"backend-size":"3.5 GB","backend-size-in-use-bytes":2908925952,"backend-size-in-use":"2.9 GB"}
+{"level":"info","ts":"2021-11-11T05:00:51.441Z","caller":"etcdserver/raft.go:483","msg":"restarting local member","cluster-id":"36e4cefc7f71087f","local-member-id":"17e4f644df656727","commit-index":1374980760}
+{"level":"info","ts":"2021-11-11T05:00:51.444Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"17e4f644df656727 switched to configuration voters=(1721771733228545831 3106812294462957930 6617977651748719412)"}
+{"level":"info","ts":"2021-11-11T05:00:51.444Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"17e4f644df656727 became follower at term 4644"}
+{"level":"info","ts":"2021-11-11T05:00:51.444Z","logger":"raft","caller":"etcdserver/zap_raft.go:77","msg":"newRaft 17e4f644df656727 [peers: [17e4f644df656727,2b1d9d523b47e96a,5bd7c79c57f4cb34], term: 4644, commit: 1374980760, applied: 1374980760, lastindex: 1374980760, lastterm: 4644]"}
+{"level":"info","ts":"2021-11-11T05:00:51.444Z","caller":"api/capability.go:75","msg":"enabled capabilities for version","cluster-version":"3.5"}
+{"level":"info","ts":"2021-11-11T05:00:51.444Z","caller":"membership/cluster.go:276","msg":"recovered/added member from store","cluster-id":"36e4cefc7f71087f","local-member-id":"17e4f644df656727","recovered-remote-peer-id":"17e4f644df656727","recovered-remote-peer-urls":["https://10.129.104.104:2380"]}
+{"level":"info","ts":"2021-11-11T05:00:51.444Z","caller":"membership/cluster.go:276","msg":"recovered/added member from store","cluster-id":"36e4cefc7f71087f","local-member-id":"17e4f644df656727","recovered-remote-peer-id":"2b1d9d523b47e96a","recovered-remote-peer-urls":["https://10.129.104.107:2380"]}
+{"level":"info","ts":"2021-11-11T05:00:51.444Z","caller":"membership/cluster.go:276","msg":"recovered/added member from store","cluster-id":"36e4cefc7f71087f","local-member-id":"17e4f644df656727","recovered-remote-peer-id":"5bd7c79c57f4cb34","recovered-remote-peer-urls":["https://10.129.104.71:2380"]}
+{"level":"info","ts":"2021-11-11T05:00:51.444Z","caller":"membership/cluster.go:285","msg":"set cluster version from store","cluster-version":"3.5"}
+{"level":"warn","ts":"2021-11-11T05:00:51.445Z","caller":"auth/store.go:1220","msg":"simple token is not cryptographically signed"}
+{"level":"info","ts":"2021-11-11T05:00:51.445Z","caller":"mvcc/kvstore.go:345","msg":"restored last compact revision","meta-bucket-name":"meta","meta-bucket-name-key":"finishedCompactRev","restored-compact-revision":1313948875}
+{"level":"info","ts":"2021-11-11T05:00:52.818Z","caller":"mvcc/kvstore.go:415","msg":"kvstore restored","current-rev":1314002198}
+panic: assertion failed: tx closed
+
+goroutine 1 [running]:
+go.etcd.io/bbolt._assert(...)
+/home/remote/sbatsche/.gvm/pkgsets/go1.16.3/global/pkg/mod/go.etcd.io/bbolt@v1.3.6/db.go:1230
+go.etcd.io/bbolt.(*Cursor).seek(0xc0005a27e0, 0x19ff0c8, 0x4, 0x4, 0x7fbec6ccffff, 0x400, 0x7fbec6b5a200, 0x20300200000000, 0x7fbec6ccffff, 0xc0005a2820, ...)
+/home/remote/sbatsche/.gvm/pkgsets/go1.16.3/global/pkg/mod/go.etcd.io/bbolt@v1.3.6/cursor.go:155 +0x185
+go.etcd.io/bbolt.(*Bucket).Bucket(0xc000448398, 0x19ff0c8, 0x4, 0x4, 0x7fbec6b5a100)
+/home/remote/sbatsche/.gvm/pkgsets/go1.16.3/global/pkg/mod/go.etcd.io/bbolt@v1.3.6/bucket.go:105 +0xda
+go.etcd.io/bbolt.(*Tx).Bucket(...)
+/home/remote/sbatsche/.gvm/pkgsets/go1.16.3/global/pkg/mod/go.etcd.io/bbolt@v1.3.6/tx.go:101
+go.etcd.io/etcd/server/v3/mvcc/backend.(*batchTx).UnsafeRange(0xc0002b2e10, 0x139a658, 0x1a62a40, 0x19ffd90, 0x10, 0x10, 0x0, 0x0, 0x0, 0x0, ...)
+/tmp/etcd-release-3.5.0/etcd/release/etcd/server/mvcc/backend/batch_tx.go:149 +0x67
+go.etcd.io/etcd/server/v3/etcdserver/cindex.unsafeReadConsistentIndex(0x7fbec70e0e80, 0xc0002b2e10, 0x40b945, 0x10e8680)
+/tmp/etcd-release-3.5.0/etcd/release/etcd/server/etcdserver/cindex/cindex.go:136 +0x93
+go.etcd.io/etcd/server/v3/etcdserver/cindex.ReadConsistentIndex(0x7fbec70e0e80, 0xc0002b2e10, 0x0, 0x0)
+/tmp/etcd-release-3.5.0/etcd/release/etcd/server/etcdserver/cindex/cindex.go:154 +0x7f
+go.etcd.io/etcd/server/v3/etcdserver/cindex.(*consistentIndex).ConsistentIndex(0xc0004b36e0, 0x0)
+/tmp/etcd-release-3.5.0/etcd/release/etcd/server/etcdserver/cindex/cindex.go:77 +0xbd
+go.etcd.io/etcd/server/v3/etcdserver.NewServer(0x7fff6ca691e8, 0x2a, 0x0, 0x0, 0x0, 0x0, 0xc0004e2000, 0x1, 0x1, 0xc0004e2240, ...)
+/tmp/etcd-release-3.5.0/etcd/release/etcd/server/etcdserver/server.go:613 +0x2c71
+go.etcd.io/etcd/server/v3/embed.StartEtcd(0xc0004d8000, 0xc0004d8600, 0x0, 0x0)
+/tmp/etcd-release-3.5.0/etcd/release/etcd/server/embed/etcd.go:244 +0xef8
+go.etcd.io/etcd/server/v3/etcdmain.startEtcd(0xc0004d8000, 0x1202a6f, 0x6, 0xc000186001, 0x2)
+/tmp/etcd-release-3.5.0/etcd/release/etcd/server/etcdmain/etcd.go:227 +0x32
+go.etcd.io/etcd/server/v3/etcdmain.startEtcdOrProxyV2(0xc000136000, 0x15, 0x16)
+/tmp/etcd-release-3.5.0/etcd/release/etcd/server/etcdmain/etcd.go:122 +0x257a
+go.etcd.io/etcd/server/v3/etcdmain.Main(0xc000136000, 0x15, 0x16)
+/tmp/etcd-release-3.5.0/etcd/release/etcd/server/etcdmain/main.go:40 +0x11f
+main.main()
+/tmp/etcd-release-3.5.0/etcd/release/etcd/server/main.go:32 +0x45

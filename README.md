@@ -13,5 +13,5 @@ This repo contains analysis of various etcd issues from etcd community. The purp
 | **[13466](13466)** |  etcd panic on startup with error message "unexpected removal of unknown remote peer"   | 2021-11-19 | 3.5.0 | |
 | **[13480](13480)** |  Unable to specify time.Duration types in etcd config file   | 2021-11-20 | N/A | |
 | **[13196](13196)** |  etcd 3.5.0 resurrects ancient (unremovable) members  | 2021-11-22 | 3.5.0 | Workaround fix in 3.5.1, [pull/13348](https://github.com/etcd-io/etcd/pull/13348); <br />Formal fix will be available in 3.5.2; <br />3.6 will deprecate the v2store.|
-
+| **[13494](13494)** |  etcd3.5.0: assertion failed: tx closed  | 2021-11-28 | 3.5, 3.6 | [pull/13501](https://github.com/etcd-io/etcd/pull/13501) for 3.5; <br /> [pull/13500](https://github.com/etcd-io/etcd/pull/13500) for 3.6 |
 
