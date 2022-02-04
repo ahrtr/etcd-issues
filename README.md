@@ -16,3 +16,8 @@ This repo contains analysis of various etcd issues from etcd community. The purp
 | **[13494](13494)** |  etcd3.5.0: assertion failed: tx closed  | 2021-11-28 | 3.5, 3.6 | [pull/13501](https://github.com/etcd-io/etcd/pull/13501) for 3.5; <br /> [pull/13500](https://github.com/etcd-io/etcd/pull/13500) for 3.6 |
 | **[13554](13554)** |  a client can cause a nil dereference in etcd by passing an invalid SortTarget  | 2021-12-23 | 3.5, 3.6 | [pull/13555](https://github.com/etcd-io/etcd/pull/13555) for 3.6 |
 | **[13553](13553)** |  a client can panic etcd by passing invalid utf-8 in the client-api-version header  | 2021-12-23 | 3.5, 3.6 | [pull/13560](https://github.com/etcd-io/etcd/pull/13560) for 3.6 |
+
+# WeChat channel
+Welcome to subscribe to my WeChat channel below,
+
+![WeChat Channel](wechat/wechat_channel.jpeg)
