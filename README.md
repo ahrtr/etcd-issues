@@ -4,7 +4,8 @@ etcd-issues
 This repo contains analysis of various etcd issues from etcd community. The purpose is to provide a central place for others to learn from various practical etcd issues.
 
 # Docs
-tbd...
+- **[cluster ID mismatch](docs/cluster_id_mismatch.md)**
+
 
 # WeChat channel
 Welcome to subscribe to my WeChat channel below,
