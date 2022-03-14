@@ -4,8 +4,8 @@ etcd-issues
 This repo contains analysis of various etcd issues from etcd community. The purpose is to provide a central place for others to learn from various practical etcd issues.
 
 # Docs
-- **[cluster ID mismatch](docs/cluster_id_mismatch.md)**
-- **[What's new in etcd 3.6?](docs/what_is_new_in_etcd_3_6.md)**
+- **[cluster ID mismatch](docs/cluster_id_mismatch.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-3-11)</span>
+- **[What's new in etcd 3.6?](docs/what_is_new_in_etcd_3_6.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-3-14)</span>
 
 
 # WeChat channel
