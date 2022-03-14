@@ -23,7 +23,13 @@ There are three major changes in 3.6,
 Let's go through them one by one.
 
 # Removal of V2
-Almost all v2 related source code has already been removed. If you are still using client v2 to communicate with etcd server, 
+Almost all v2 related source code has already been removed. The following two flags are gone,
+```
+--enable-v2 'false'
+--experimental-enable-v2v3 ''
+```
+
+If you are still using client v2 to communicate with etcd server,
 you must switch to client v3 before upgrading to 3.6; otherwise you will run into issue for sure. 
 
 For example, flannel is still using client v2, so it isn't compatible with etcd 3.6. Refer to the issue [flannel/issues/1191](https://github.com/flannel-io/flannel/issues/1191).
