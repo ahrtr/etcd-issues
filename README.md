@@ -5,6 +5,7 @@ This repo contains analysis of various etcd issues from etcd community. The purp
 
 # Docs
 - **[cluster ID mismatch](docs/cluster_id_mismatch.md)**
+- **[What's new in etcd 3.6?](docs/what_is_new_in_etcd_3_6.md)**
 
 
 # WeChat channel

@@ -1,5 +1,10 @@
 cluster ID mismatch
 ======
+<span style="color: #808080; font-family: Babas; font-size: 1em;">
+ahrtr@github <br>
+March 11th, 2022
+</span>
+
 # Background
 Many etcd users raised the question of why etcd complains "cluster ID mismatch", and how to resolve it. For example, <br>
 [etcd/issues/11562](https://github.com/etcd-io/etcd/issues/11562) <br>
