@@ -6,7 +6,7 @@ This repo contains analysis of various etcd issues from etcd community. The purp
 # Docs
 - **[cluster ID mismatch](docs/cluster_id_mismatch.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-3-11)</span>
 - **[What's new in etcd 3.6?](docs/what_is_new_in_etcd_3_6.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-3-14)</span>
-
+- **[Summary on the data inconsistent issue](issues/13766)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-4-10)</span>
 
 # WeChat channel
 Welcome to subscribe to my WeChat channel below,
