@@ -1,6 +1,15 @@
 issue https://github.com/etcd-io/etcd/issues/13766
 ======
 
+## Table of Contents
+
+- **[Background](#background)**
+- **[Current status](#current-status)**
+- **[Root cause](#root-cause)**
+- **[How to reproduce this issue](#how-to-reproduce-this-issue)**
+- **[How is the issue resolved](#how-is-the-issue-resolved)**
+- **[When 3.5.3 can be ready](#when-353-can-be-ready)**
+
 ## Background
 It's a regression introduced in [pull/12855](https://github.com/etcd-io/etcd/pull/12855), 
 and all the existing etcd 3.5.x releases (including 3.5.0, 3.5.1 and 3.5.2) have this issue. 
@@ -97,7 +106,7 @@ $ etcdctl endpoint status -w json --cluster | jq
 ]
 ```
 
-## How is the issue resolved?
+## How is the issue resolved
 There are four proposals (that's all I can think of, please let me know if you have a better one), please 
 refer to [13854#discussion_r840127417](https://github.com/etcd-io/etcd/pull/13854#discussion_r840127417).
 
@@ -114,7 +123,7 @@ eventually gave up for now, reasons:
 
 We may consider finishing the second proposal in 3.7.
 
-## When 3.5.3 can be ready?
+## When 3.5.3 can be ready
 Please refer to [Plans for v3.5.3 release](https://github.com/etcd-io/etcd/issues/13894). 
 
 Previously the etcd 3.5.2 was released (on Feb 1st, 2022) about 56 days later after 
