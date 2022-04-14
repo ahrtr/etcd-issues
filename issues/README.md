@@ -17,4 +17,5 @@ This repo contains analysis of various etcd issues from etcd community. The purp
 | **[13554](13554)** |  a client can cause a nil dereference in etcd by passing an invalid SortTarget  | 2021-12-23 | 3.5, 3.6 | [pull/13555](https://github.com/etcd-io/etcd/pull/13555) for 3.6 |
 | **[13553](13553)** |  a client can panic etcd by passing invalid utf-8 in the client-api-version header  | 2021-12-23 | 3.5, 3.6 | [pull/13560](https://github.com/etcd-io/etcd/pull/13560) for 3.6 |
 | **[13766](13766)** |  Inconsistent revision and data occurs  | 2022-4-10 | 3.5, 3.6 | [pull/13854](https://github.com/etcd-io/etcd/pull/13854) for 3.6; <br /> [pull/13908](https://github.com/etcd-io/etcd/pull/13908) for 3.5|
+| **[13937](13937)** |  etcd panic on startup (auth enabled)  | 2022-4-15 | 3.5.3 | [pull/13942](https://github.com/etcd-io/etcd/pull/13942) for 3.6; <br /> [pull/13946](https://github.com/etcd-io/etcd/pull/13946) for 3.5|
 
