@@ -9,6 +9,7 @@ This repo contains analysis of various etcd issues from etcd community. The purp
 - **[Summary on the data inconsistent issue](issues/13766)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-4-10)</span>
 - **[A minor regression in 3.5.3 when Auth is enabled](issues/13937)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-4-15)</span>
 - **[Overview(deep dive) on etcd](docs/cncf_storage_tag_etcd.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-6-15)</span>
+- **[Summary on the potential data loss issue in one-member cluster](issues/14370)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-9-5)</span>
 
 # WeChat channel
 Welcome to subscribe to my WeChat channel below,
