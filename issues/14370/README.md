@@ -98,6 +98,11 @@ Please see [14370#issuecomment-1235091312](https://github.com/etcd-io/etcd/issue
 to get my personal analysis & comparison between [etcd/pull/14411](https://github.com/etcd-io/etcd/pull/14411) 
 and [etcd/pull/14413](https://github.com/etcd-io/etcd/pull/14413). We are still waiting for the feedback from Tobias Grieger and Ben Darnell, who 
 are the maintainers of the etcd raft package. Please also refer to [14370#issuecomment-1235790496](https://github.com/etcd-io/etcd/issues/14370#issuecomment-1235790496)
+<br>
+
+Update(2022-09-06): The [second solution](https://github.com/etcd-io/etcd/pull/14400) has already been merged to `main` branch, and 
+cherry-picked to `release-3.5` and `release-3.4` respectively. Tobias Grieger is still working on the [raft side change](https://github.com/etcd-io/etcd/pull/14413) against `main` branch.
+Please refer to [14370#issuecomment-1237574729](https://github.com/etcd-io/etcd/issues/14370#issuecomment-1237574729).
 
 ## How to workaround this issue
 1. Please try to set up multi-member cluster in production environment.
