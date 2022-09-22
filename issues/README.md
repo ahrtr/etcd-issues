@@ -19,4 +19,5 @@ This repo contains analysis of various etcd issues from etcd community. The purp
 | **[13766](13766)** |  Inconsistent revision and data occurs  | 2022-4-10 | 3.5, 3.6 | [pull/13854](https://github.com/etcd-io/etcd/pull/13854) for 3.6; <br /> [pull/13908](https://github.com/etcd-io/etcd/pull/13908) for 3.5|
 | **[13937](13937)** |  etcd panic on startup (auth enabled)  | 2022-4-15 | 3.5.3 | [pull/13942](https://github.com/etcd-io/etcd/pull/13942) for 3.6; <br /> [pull/13946](https://github.com/etcd-io/etcd/pull/13946) for 3.5|
 | **[14370](14370)** |  There is potential data loss for one-member cluster  | 2022-8-23 | all | Resolved. Refer to [14370#issuecomment-1254645353](https://github.com/etcd-io/etcd/issues/14370#issuecomment-1254645353)|
+| **14382** |  ETCD fails to start after performing alarm list operation and then power off/on | 2022-8-25 | all | Resolved. Also see workaround solution [etcd-db-editor/main.go#L16-L28](https://github.com/ahrtr/etcd-issues/blob/d134cb8d07425bf3bf530e6bb509c6e6bc6e7c67/etcd/etcd-db-editor/main.go#L16-L28) |
 
