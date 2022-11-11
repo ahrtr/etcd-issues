@@ -11,6 +11,7 @@ This repo contains analysis of various etcd issues from etcd community. The purp
 - **[Overview(deep dive) on etcd](docs/cncf_storage_tag_etcd.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-6-15)</span>
 - **[Summary on the potential data loss issue in one-member cluster](issues/14370)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-9-5)</span>
 - **[Summary on the new data inconsistency issue because etcd doesn't load auth info when recovering from a snapshot](issues/14571)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-10-28)</span>
+- **[Summary on the revision inconsistency issue when etcd crashes during defragmentation operation](issues/revision_inconsistency)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-9-5)</span>
 
 # WeChat channel
 Welcome to subscribe to my WeChat channel below,
