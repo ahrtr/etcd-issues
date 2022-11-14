@@ -18,7 +18,8 @@ This is a regression issue introduced in [pull/12855](https://github.com/etcd-io
 the existing 3.5.x releases (including 3.5.0 ~ 3.5.5) are impacted. Note that previous critical issue 
 [issues/13766](https://github.com/etcd-io/etcd/issues/13766) was also caused by the same PR (12855).
 
-etcd 3.4 doesn't have this issue.
+etcd 3.4 doesn't have this issue. Note that there is no impact on etcd 3.5 either if performing the defragmentation
+operation offline using etcdutl.
 
 It should be very hard to reproduce this issue in production environment, because:
 1. Usually users rarely execute the defragmentation operation.
