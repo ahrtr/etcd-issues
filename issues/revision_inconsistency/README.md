@@ -11,8 +11,14 @@ revision inconsistency issue
 - **[How to workaround this issue](#how-to-workaround-this-issue)**
 
 ## Background
-If etcd crashes during processing defragmentation operation, then the member's revision might be inconsistent
-with other members.
+If etcd crashes during processing defragmentation operation, when the etcd instance starts again,
+it might reapply some entries which have already been applied, eventually the member's data & revision 
+might be inconsistent with other members. Please note that there is no impact if performing the 
+defragmentation operation offline using etcdutl.
+
+Note that usually there is no data loss, and clients can always get the latest correct data. 
+The only issue is the problematic etcd member’s revision might be a little larger than the other members. 
+But if etcd reapplies some conditional transactions, then it might also cause data inconsistency.
 
 This is a regression issue introduced in [pull/12855](https://github.com/etcd-io/etcd/pull/12855), and all
 the existing 3.5.x releases (including 3.5.0 ~ 3.5.5) are impacted. Note that previous critical issue 
