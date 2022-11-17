@@ -13,6 +13,9 @@ This repo contains analysis of various etcd issues from etcd community. The purp
 - **[Summary on the new data inconsistency issue because etcd doesn't load auth info when recovering from a snapshot](issues/14571)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-10-28)</span>
 - **[Summary on the revision inconsistency issue when etcd crashes during defragmentation operation](issues/revision_inconsistency)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-11-11)</span>
 
+# Troubleshooting guide
+- **[How to debug large db size issue?](docs/troubleshooting/how_to_debug_large_db_size_issue.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-11-17)</span>
+
 # WeChat channel
 Welcome to subscribe to my WeChat channel below,
 
