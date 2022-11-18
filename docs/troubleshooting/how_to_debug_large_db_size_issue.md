@@ -117,10 +117,10 @@ Notes:
 1. Compaction is a cluster-wide operation, so you only need to execute compaction once on whichever etcd member. 
 Of course, it will not do any harm if executing it multiple times.
 2. Defragmentation is a time-consuming task, so it's recommended to do it for each member one by one.
-3. **There is a known issue that etcd might run into data inconsistency issue if it crashes during online processing 
+3. **There is a known issue that etcd might run into data inconsistency issue if it crashes in the middle of an online 
 defragmentation operation using `etcdctl` or clientv3 API. All the existing v3.5 releases are affected, including 3.5.0 ~ 3.5.5. 
-So please use `etcdutl` to offline perform defragmentation operation**. It means that you need to stop each etcd instance firstly,
-then perform defragmentation using `etcdutl`, start the instance at last. 
+So please use `etcdutl` to offline perform defragmentation operation**, but this requires taking each member offline one at a time. 
+It means that you need to stop each etcd instance firstly, then perform defragmentation using `etcdutl`, start the instance at last.
 Please refer to the issue 1 in [public statement](https://docs.google.com/document/d/1q6PausGMsj-ZyqN2Zx0W8426KsB5GEh3XA801JxBCiE/edit).
 
 The following example shows you how to execute defragmention using `etcdutl`,
@@ -137,7 +137,7 @@ Kubernetes apiserver, then execute command below to do the statistics.
 
 In the following example, there are about 971K events, so obvious the events occupy most of the storage space. 
 **The next step is to use your best judgement to figure out the root cause**. Is it expected? Have you or your user
-change the value of `--event-ttl` (defaults to 1h)? Is it running into a known issue (e.g. [107170](https://github.com/kubernetes/kubernetes/issues/107170)  )? 
+change the value of `--event-ttl` (apiserver flag, defaults to 1h)? Is it running into a known issue (e.g. [107170](https://github.com/kubernetes/kubernetes/issues/107170)  )? 
 ```
 # etcdctl --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd/server.crt --key /etc/kubernetes/pki/etcd/server.key --endpoints https://etcd-0:2379 get /registry --prefix --keys-only | grep -v ^$ | awk -F '/'  '{ h[$3]++ } END {for (k in h) print h[k], k}' | sort -nr
 971223 events
