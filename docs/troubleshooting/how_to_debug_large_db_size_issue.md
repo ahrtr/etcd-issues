@@ -175,6 +175,11 @@ change the value of `--event-ttl` (apiserver flag, defaults to 1h)? Is it runnin
 1 csidrivers
 ```
 
+Usually when there are huge entries, it may take a long time to execute command above, so please set larger timeout values (see below), otherwise you may run into "context deadline exceeded".
+```
+--dial-timeout 10s --command-timeout 20s
+```
+
 If the etcd instance is not running, then you can use [etcd-dump-db](https://github.com/etcd-io/etcd/tree/main/tools/etcd-dump-db)
 to do the similar analysis(see example below). Note that you can build the binary `etcd-dump-db` using command `go build` with a golang version 1.19.x.
 ```
