@@ -15,6 +15,7 @@ This repo contains analysis of various etcd issues from etcd community. The purp
 
 # Troubleshooting guide
 - **[How to debug large db size issue?](docs/troubleshooting/how_to_debug_large_db_size_issue.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-11-17)</span>
+- **[How to debug performance issue?](docs/troubleshooting/how_to_debug_performance_issue.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-12-23)</span>
 
 # WeChat channel
 Welcome to subscribe to my WeChat channel below,
