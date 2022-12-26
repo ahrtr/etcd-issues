@@ -108,7 +108,7 @@ func generateDBFile() {
 		}
 		writeDataToBucket(b1_2, 10)
 
-		// ================= ben_a
+		// ================= ben_b
 		b2, err := tx.CreateBucket([]byte("ben_b"))
 		if err != nil {
 			panic(err)
