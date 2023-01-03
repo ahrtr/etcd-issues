@@ -183,45 +183,46 @@ BoltDB maps the db file into memory directly, so the larger the db file, the mor
 Please pay attention to metrics `wal_fsync_duration_seconds` and `backend_commit_duration_seconds`. Normally majority values
 should be less than 32ms or even 16ms, otherwise usually it means bad disk I/O latency.
 ```
-# curl http://127.0.0.1:2379/metrics | grep etcd_disk_wal_fsync_duration_seconds_bucket
+# curl --cacert /path/to/etcdctl-ca.crt --cert /path/to/etcdctl.crt --key /path/to/etcdctl.key https://<IP or FQDN>:2379/metrics | grep etcd_disk_wal_fsync_duration_seconds_bucket
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0etcd_disk_wal_fsync_duration_seconds_bucket{le="0.001"} 1
-etcd_disk_wal_fsync_duration_seconds_bucket{le="0.002"} 1
-etcd_disk_wal_fsync_duration_seconds_bucket{le="0.004"} 1
-etcd_disk_wal_fsync_duration_seconds_bucket{le="0.008"} 2
-etcd_disk_wal_fsync_duration_seconds_bucket{le="0.016"} 2
-etcd_disk_wal_fsync_duration_seconds_bucket{le="0.032"} 2
-etcd_disk_wal_fsync_duration_seconds_bucket{le="0.064"} 2
-etcd_disk_wal_fsync_duration_seconds_bucket{le="0.128"} 2
-etcd_disk_wal_fsync_duration_seconds_bucket{le="0.256"} 2
-etcd_disk_wal_fsync_duration_seconds_bucket{le="0.512"} 2
-etcd_disk_wal_fsync_duration_seconds_bucket{le="1.024"} 2
-etcd_disk_wal_fsync_duration_seconds_bucket{le="2.048"} 2
-etcd_disk_wal_fsync_duration_seconds_bucket{le="4.096"} 2
-etcd_disk_wal_fsync_duration_seconds_bucket{le="8.192"} 2
-etcd_disk_wal_fsync_duration_seconds_bucket{le="+Inf"} 2
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0etcd_disk_wal_fsync_duration_seconds_bucket{le="0.001"} 6.08029e+06
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.002"} 7.58699e+06
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.004"} 8.99064e+06
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.008"} 9.169984e+06
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.016"} 9.251682e+06
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.032"} 9.269497e+06
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.064"} 9.281289e+06
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.128"} 9.289369e+06
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.256"} 9.290801e+06
+etcd_disk_wal_fsync_duration_seconds_bucket{le="0.512"} 9.290905e+06
+etcd_disk_wal_fsync_duration_seconds_bucket{le="1.024"} 9.290922e+06
+etcd_disk_wal_fsync_duration_seconds_bucket{le="2.048"} 9.290928e+06
+etcd_disk_wal_fsync_duration_seconds_bucket{le="4.096"} 9.290933e+06
+etcd_disk_wal_fsync_duration_seconds_bucket{le="8.192"} 9.290933e+06
+etcd_disk_wal_fsync_duration_seconds_bucket{le="+Inf"} 9.290933e+06
 ```
 
 ```
-# curl http://127.0.0.1:2379/metrics | grep etcd_disk_backend_commit_duration_seconds_bucket
+# curl --cacert /path/to/etcdctl-ca.crt --cert /path/to/etcdctl.crt --key /path/to/etcdctl.key https://<IP or FQDN>:2379/metrics | grep etcd_disk_backend_commit_duration_seconds_bucket
   % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
                                  Dload  Upload   Total   Spent    Left  Speed
-  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0etcd_disk_backend_commit_duration_seconds_bucket{le="0.001"} 2
-etcd_disk_backend_commit_duration_seconds_bucket{le="0.002"} 2
-etcd_disk_backend_commit_duration_seconds_bucket{le="0.004"} 4
-etcd_disk_backend_commit_duration_seconds_bucket{le="0.008"} 4
-etcd_disk_backend_commit_duration_seconds_bucket{le="0.016"} 4
-etcd_disk_backend_commit_duration_seconds_bucket{le="0.032"} 4
-etcd_disk_backend_commit_duration_seconds_bucket{le="0.064"} 4
-etcd_disk_backend_commit_duration_seconds_bucket{le="0.128"} 4
-etcd_disk_backend_commit_duration_seconds_bucket{le="0.256"} 4
-etcd_disk_backend_commit_duration_seconds_bucket{le="0.512"} 4
-etcd_disk_backend_commit_duration_seconds_bucket{le="1.024"} 4
-etcd_disk_backend_commit_duration_seconds_bucket{le="2.048"} 4
-etcd_disk_backend_commit_duration_seconds_bucket{le="4.096"} 4
-etcd_disk_backend_commit_duration_seconds_bucket{le="8.192"} 4
-etcd_disk_backend_commit_duration_seconds_bucket{le="+Inf"} 4
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0etcd_disk_backend_commit_duration_seconds_bucket{le="0.001"} 10238
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.002"} 3.928715e+06
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.004"} 6.724757e+06
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.008"} 7.009657e+06
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.016"} 7.095463e+06
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.032"} 7.117702e+06
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.064"} 7.132172e+06
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.128"} 7.145274e+06
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.256"} 7.147365e+06
+etcd_disk_backend_commit_duration_seconds_bucket{le="0.512"} 7.14747e+06
+etcd_disk_backend_commit_duration_seconds_bucket{le="1.024"} 7.147488e+06
+etcd_disk_backend_commit_duration_seconds_bucket{le="2.048"} 7.147495e+06
+etcd_disk_backend_commit_duration_seconds_bucket{le="4.096"} 7.147496e+06
+etcd_disk_backend_commit_duration_seconds_bucket{le="8.192"} 7.147496e+06
+etcd_disk_backend_commit_duration_seconds_bucket{le="+Inf"} 7.147497e+06
+100  172k    0  172k    0     0   955k      0 --:--:-- --:--:-- --:--:--  970k
 ```
 
 Note when it takes WAL more than 1 second to sync data to disk, then you will see warning message something like "[slow fdatasync](https://github.com/etcd-io/etcd/blob/16e1fff519eeff66e626dd15fef399ea2b10b9cc/server/storage/wal/wal.go#L816-L820)".
@@ -271,6 +272,52 @@ Disk stats (read/write):
 Please pay attention to metrics `peer_round_trip_time_seconds` if you suspect the peer communication is slow. Usually it should be < 100ms. 
 If it's single-node cluster, please ignore this metrics.
 
+```
+# curl --cacert /path/to/etcdctl-ca.crt --cert /path/to/etcdctl.crt --key /path/to/etcdctl.key https://<IP or FQDN>:2379/metrics | grep peer_round_trip_time_seconds
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0# HELP etcd_network_peer_round_trip_time_seconds Round-Trip-Time histogram between peers
+# TYPE etcd_network_peer_round_trip_time_seconds histogram
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="0.0001"} 0
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="0.0002"} 0
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="0.0004"} 0
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="0.0008"} 0
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="0.0016"} 17268
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="0.0032"} 86296
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="0.0064"} 115707
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="0.0128"} 125287
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="0.0256"} 221667
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="0.0512"} 257096
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="0.1024"} 261407
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="0.2048"} 262263
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="0.4096"} 262403
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="0.8192"} 262445
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="1.6384"} 262455
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="3.2768"} 262455
+etcd_network_peer_round_trip_time_seconds_bucket{To="17f206fd866fdab2",le="+Inf"} 262455
+etcd_network_peer_round_trip_time_seconds_sum{To="17f206fd866fdab2"} 3988.9603677819496
+etcd_network_peer_round_trip_time_seconds_count{To="17f206fd866fdab2"} 262455
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="0.0001"} 0
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="0.0002"} 0
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="0.0004"} 1
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="0.0008"} 67
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="0.0016"} 48317
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="0.0032"} 108568
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="0.0064"} 126100
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="0.0128"} 130849
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="0.0256"} 243187
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="0.0512"} 261651
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="0.1024"} 262367
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="0.2048"} 262426
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="0.4096"} 262448
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="0.8192"} 262452
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="1.6384"} 262453
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="3.2768"} 262454
+etcd_network_peer_round_trip_time_seconds_bucket{To="9dccb73515ee278f",le="+Inf"} 262454
+etcd_network_peer_round_trip_time_seconds_sum{To="9dccb73515ee278f"} 3036.664486833979
+etcd_network_peer_round_trip_time_seconds_count{To="9dccb73515ee278f"} 262454
+```
+
 # "apply request took too long"
 Usually when you see lots of warning messages something like "`apply request took too long`" (see example below), usually it's caused by either slow peer communication, slow disk I/O or CPU or memory pressure. 
 In this case, you need to figure out the bottleneck firstly per guide above.
@@ -292,6 +339,7 @@ etcd might run out of the disk space quota, and cause big memory usage. Please r
 real peer network performance. Usually it's a best practice to tune `--heartbeat-interval` to roughly match the round trip time between
 members, and `--election-timeout` to be about 10 times of heartbeat-interval. 
 
+Please refer to metrics `peer_round_trip_time_seconds` mentioned in [Network I/O](#network-io).
 
 # Performance optimization
 A couple of tips for performance optimization:
