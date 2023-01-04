@@ -10,8 +10,25 @@ Users can configure the quota of the backend db size using flag `--quota-backend
 the etcd db file may consume, namely the ${etcd-data-dir}/member/snap/db file. Its default value is 2GB, and the 
 suggested max value is 8GB.
 
-2GB is usually sufficient for most use cases. If you run out of the db quota, it would be better to figure out 
-whether it's expected. It's exactly the reason why I provide this guide.
+2GB is usually sufficient for most use cases. If you run out of the db quota, you will see error message `etcdserver: mvcc: database space exceeded`
+when trying to write more data, and see alarm "NOSPACE" (see example below) when checking the endpoint status or health state. It would be better to figure out whether it's expected. It's exactly the reason why I provide this guide.
+
+```
+$ etcdctl endpoint status -w table
++----------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------------------------------+
+|    ENDPOINT    |        ID        | VERSION | DB SIZE | IS LEADER | IS LEARNER | RAFT TERM | RAFT INDEX | RAFT APPLIED INDEX |             ERRORS             |
++----------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------------------------------+
+| 127.0.0.1:2379 | 8e9e05c52164694d |   3.5.5 |   25 kB |      true |      false |         2 |          5 |                  5 |  memberID:10276657743932975437 |
+|                |                  |         |         |           |            |           |            |                    |                 alarm:NOSPACE  |
++----------------+------------------+---------+---------+-----------+------------+-----------+------------+--------------------+--------------------------------+
+
+$ etcdctl endpoint health -w table
++----------------+--------+------------+---------------------------+
+|    ENDPOINT    | HEALTH |    TOOK    |           ERROR           |
++----------------+--------+------------+---------------------------+
+| 127.0.0.1:2379 |  false | 1.850456ms | Active Alarm(s): NOSPACE  |
++----------------+--------+------------+---------------------------+
+```
 
 # How to check db size
 The easiest way is to execute `ls -lrt ${etcd-data-dir}/member/snap` command directly. For example, the db file is
@@ -230,4 +247,4 @@ In the following example, there are two etcd clusters; one for the normal usage,
 ```
 
 If the behavior (db size exceeds the quota) isn't expected, then you'd better figure out the root cause and resolve
-it firstly. If you insist on apply solutions mentioned above, it can just mitigate the issue instead of resolving it.
+it firstly. If you insist on applying solutions mentioned above, it can mitigate the issue instead of resolving it.
