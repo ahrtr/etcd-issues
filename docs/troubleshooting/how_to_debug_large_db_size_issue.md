@@ -5,6 +5,15 @@ ahrtr@github <br>
 November 17th, 2022
 </span>
 
+
+# Table of Contents
+
+- **[Background](#backgroundo)**
+- **[How to check db size](#how-to-check-db-size)**
+- **[Compaction & Defragmentation](#compaction--defragmentation)**
+- **[What data occupies most of the storage space](#what-data-occupies-most-of-the-storage-space)**
+- **[Solutions](#solutions)**
+
 # Background
 Users can configure the quota of the backend db size using flag `--quota-backend-bytes`. It's the max number of bytes 
 the etcd db file may consume, namely the ${etcd-data-dir}/member/snap/db file. Its default value is 2GB, and the 
