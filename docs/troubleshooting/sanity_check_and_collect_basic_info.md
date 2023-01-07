@@ -186,4 +186,4 @@ More info might be requested based on the issue details.
 - Each member's metrics if you run into performance issue. See [How to debug performance issue](how_to_debug_performance_issue.md).
 - Steps to reproduce the issue (as minimally and precisely as possible). 
 - All member's data directories. 
-  - If the data is sensitive to you, please keep the data at a safe place, we might guide you to analyze the data later.
+  - Please do not remove the data and keep them at a safe place, we might guide you to analyze the data later.
