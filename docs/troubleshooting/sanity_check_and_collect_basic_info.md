@@ -174,7 +174,7 @@ etcdctl --cacert /etc/kubernetes/pki/etcd/ca.crt --cert /etc/kubernetes/pki/etcd
 ```
 
 # Collect basic info
-No matter what issue you are running into, please always provide at least the following info as possible as you can. 
+No matter what issue you are running into, please always provide at least the following info as possible as you can when you raise an issue in the etcd community. 
 More info might be requested based on the issue details.
 - etcd version.
   - Usually the sanity check output contains this info. But it's important, so list it separately in case you have any trouble executing `etcdctl` command.

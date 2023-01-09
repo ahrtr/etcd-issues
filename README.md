@@ -13,7 +13,7 @@ This repo contains analysis of various etcd issues from etcd community. The purp
 - **[Summary on the new data inconsistency issue because etcd doesn't load auth info when recovering from a snapshot](issues/14571)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-10-28)</span>
 - **[Summary on the revision inconsistency issue when etcd crashes during defragmentation operation](issues/revision_inconsistency)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-11-11)</span>
 
-# Troubleshooting guide
+# [Troubleshooting guide](docs/troubleshooting/README.md)
 - **[How to debug large db size issue?](docs/troubleshooting/how_to_debug_large_db_size_issue.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-11-17)</span>
 - **[How to debug performance issue?](docs/troubleshooting/how_to_debug_performance_issue.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-12-23)</span>
 - **[Sanity check on etcd cluster and collect basic info](docs/troubleshooting/sanity_check_and_collect_basic_info.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2023-01-05)</span>
