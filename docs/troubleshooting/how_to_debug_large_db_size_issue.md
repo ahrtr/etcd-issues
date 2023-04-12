@@ -11,6 +11,7 @@ November 17th, 2022
 - **[Background](#backgroundo)**
 - **[How to check db size](#how-to-check-db-size)**
 - **[Compaction & Defragmentation](#compaction--defragmentation)**
+  - **[Monitor db size](#monitor-db-size)**
 - **[What data occupies most of the storage space](#what-data-occupies-most-of-the-storage-space)**
 - **[Solutions](#solutions)**
 
@@ -130,6 +131,13 @@ and `dbSizeInUse`. Let's use the first endpoint as an example, its `dbSize` is 5
 ]
 ```
 
+etcd also exposes the following metrics,
+| Metrics |  Description |
+|-------|--------------|
+| etcd_server_quota_backend_bytes  | Current backend storage quota size in bytes.  |
+| etcd_mvcc_db_total_size_in_bytes | Total size of the underlying database physically allocated in bytes. |
+| etcd_mvcc_db_total_size_in_use_in_bytes | Total size of the underlying database logically in use in bytes. |
+
 # Compaction & Defragmentation
 etcd supports MVCC(Multi-Version Concurrent Control), and it keeps an exact history of its key spaces.
 The compaction operation is the only way to purge history. But the free space will not be reclaimed automatically,
@@ -143,6 +151,8 @@ Notes:
 1. Compaction is a cluster-wide operation, so you only need to execute compaction once on whichever etcd member. 
 Of course, it will not do any harm if executing it multiple times.
 2. Defragmentation is a time-consuming task, so it's recommended to do it for each member one by one.
+3. Please do not do defragmentation if any member is unhealthy.
+4. It's recommended to defragment the leader last, because it may cause transferring leadership, and cause additional performance impact.
 3. **There is a known issue that etcd might run into data inconsistency issue if it crashes in the middle of an online 
 defragmentation operation using `etcdctl` or clientv3 API. All the existing v3.5 releases are affected, including 3.5.0 ~ 3.5.5. 
 So please use `etcdutl` to offline perform defragmentation operation**, but this requires taking each member offline one at a time. 
@@ -152,6 +162,30 @@ Please refer to the issue 1 in [public statement](https://docs.google.com/docume
 The following example shows you how to execute defragmention using `etcdutl`,
 ```
 $ etcdutl defrag --data-dir  ~/tmp/etcd/infra1.etcd/
+```
+
+## Monitor db size
+etcd supports automatic compaction, but doesn't support automatic defragmentation. Currently, users need
+to take care of defragmentation themselves.
+
+Defragmentation is an expensive operation, so we should do it as infrequent as possible. On the other
+hand, we also need to make sure any etcd member will not run out of the storage quota. We need to monitor
+the storage usage, and perform defragmentation accordingly. See examples below. Please update the expressions
+or parameters based on your preference.
+
+**Example 1**: the following expression means db size exceeds 80% of the defined quota,
+```
+(last_over_time(etcd_mvcc_db_total_size_in_bytes[5m]) / last_over_time(etcd_server_quota_backend_bytes[5m]))*100 > 80
+```
+
+**Example 2**: we predict the etcd instance might run out of disk space in the next four hours,
+```
+predict_linear(etcd_mvcc_db_total_size_in_bytes[4h], 4*60*60) > etcd_server_quota_backend_bytes
+```
+
+**Example 3**: db size in use is less than 50% of the actual allocated disk space, and db size in use is greater than 200MiB,
+```
+(last_over_time(etcd_mvcc_db_total_size_in_use_in_bytes[5m]) / last_over_time(etcd_mvcc_db_total_size_in_bytes[5m])) < 0.5 and etcd_mvcc_db_total_size_in_use_in_bytes > 209715200
 ```
 
 # What data occupies most of the storage space
