@@ -152,7 +152,7 @@ Notes:
 Of course, it will not do any harm if executing it multiple times.
 2. Defragmentation is a time-consuming task, so it's recommended to do it for each member one by one.
 3. Please do not do defragmentation if any member is unhealthy.
-4. It's recommended to defragment the leader last, because it may cause transferring leadership, and cause additional performance impact.
+4. It's recommended to defragment the leader last, because it might stop-the-world and cause transferring leadership multiple times, and accordingly cause additional performance impact (although usually it isn't a big deal).
 3. **There is a known issue that etcd might run into data inconsistency issue if it crashes in the middle of an online 
 defragmentation operation using `etcdctl` or clientv3 API. All the existing v3.5 releases are affected, including 3.5.0 ~ 3.5.5. 
 So please use `etcdutl` to offline perform defragmentation operation**, but this requires taking each member offline one at a time. 
