@@ -169,9 +169,11 @@ etcd supports automatic compaction, but doesn't support automatic defragmentatio
 to take care of defragmentation themselves.
 
 Defragmentation is an expensive operation, so we should do it as infrequent as possible. On the other
-hand, we also need to make sure any etcd member will not run out of the storage quota. We need to monitor
-the storage usage, and perform defragmentation accordingly. See examples below. Please update the expressions
-or parameters based on your preference.
+hand, we also need to make sure any etcd member will not run out of the storage quota. It's recommended to
+run defragmentation using [etcd-defrag](https://github.com/ahrtr/etcd-defrag). 
+
+It's also recommended to continuously monitor the storage usage with a monitoring system (e.g. prometheus)
+and raise alarms (see examples below) when needed.
 
 **Example 1**: the following expression means db size exceeds 80% of the defined quota,
 ```
