@@ -230,7 +230,7 @@ Note when it takes WAL more than 1 second to sync data to disk, then you will se
 ## fio
 [fio](https://github.com/axboe/fio) is a useful & flexible disk I/O tester. 
 
-See an example below, note based on [this link](https://www.ibm.com/cloud/blog/using-fio-to-tell-whether-your-storage-is-fast-enough-for-etcd), it's recommended to set `--bs=2300` because almost all WAL write size are in the range 2200-2400.
+See an example below, note based on [this link](https://prog.world/is-storage-speed-suitable-for-etcd-ask-fio/), it's recommended to set `--bs=2300` because almost all WAL write size are in the range 2200-2400.
 ```
 # /usr/bin/fio --name=fiotst --readwrite=randrw --rwmixwrite=100 --bs=256k --invalidate=1 --direct=1 --filename=/mnt/volume1/testpod/fiotst1gb --size=1G --time_base --runtime=60 --ioengine=libaio --numjobs=4 --iodepth=16 --norandommap --randrepeat=0 --group_reporting
 
