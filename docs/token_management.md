@@ -11,6 +11,7 @@ January 23, 2023
 - **[How is each token generated](#how-is-each-token-generated)**
   - [Simple Token](#simple-token)
   - [JWT Token](#jwt-token)
+- **[How should client side configure credentials](#how-should-client-side-configure-credentials)**
 - **[How is the credentials and token exchanged/transported](#how-is-the-credentials-and-token-exchangedtransported)**
 - **[How is the token used and managed](#how-is-the-token-used-and-managed)**
   - [Simple Token](#simple-token-1)
@@ -65,6 +66,13 @@ which is **cryptographically signed** by the provided private key.
 Note etcd depends on [golang-jwt/jwt](https://github.com/golang-jwt/jwt) to generate JWT tokens.
 
 Refer to [#signing-methods-and-key-types](https://github.com/golang-jwt/jwt#signing-methods-and-key-types) to learn more about Signing Methods and Key Types.
+
+# How should client side configure credentials
+There are two ways for the client side to configure the credentials. The first way is to configure username and password. Note that it's independent of how the token is generated
+on server side. In other words, the server side can generate a simple token or JWT based on the value configured for `--auth-token`.
+
+The second way is to use TLS Common Name with the option `--client-cert-auth=true`. In this case, the client doesn't need a password for a user, accordingly the client doesn't need to
+authenticate the user to get a token either. The server side will try to get the username from the field of Common Name (CN) from the client's certificate.
 
 # How is the credentials and token exchanged/transported?
 When adding a user, the client side populates [AuthUserAddRequest](https://github.com/etcd-io/etcd/blob/ee566c492bb2e0962068a531666c68e1c39d3723/api/etcdserverpb/rpc.pb.go#L4540),
