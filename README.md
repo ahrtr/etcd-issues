@@ -22,7 +22,6 @@ This repo contains analysis of various etcd issues from etcd community. The purp
 - **[How to debug performance issue?](docs/troubleshooting/how_to_debug_performance_issue.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-12-23)</span>
 - **[Sanity check on etcd cluster and collect basic info](docs/troubleshooting/sanity_check_and_collect_basic_info.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2023-01-05)</span>
 
-# WeChat channel
-Welcome to subscribe to my WeChat channel below,
+# Contribution
+Any contribution is welcome!
 
-![WeChat Channel](wechat/wechat_channel.jpeg)
