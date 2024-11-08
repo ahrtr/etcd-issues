@@ -26,5 +26,5 @@ Click [here](issues) to view the complete list of issues.
 - **[Sanity check on etcd cluster and collect basic info](docs/troubleshooting/sanity_check_and_collect_basic_info.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2023-01-05)</span>
 
 # Contribution
-Any contribution is welcome!
+Contributions are welcome! Refer to [Call for contributors](https://github.com/ahrtr/etcd-issues/issues/7).
 
