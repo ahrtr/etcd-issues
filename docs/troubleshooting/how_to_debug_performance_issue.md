@@ -148,6 +148,8 @@ Of course, you can also take a look at the metrics using `curl`,
 process_resident_memory_bytes 2.8889088e+07
 ```
 
+It’s even better to monitor memory usage continuously over a period.
+
 ## (optional) Investigate memory bottleneck using pprof
 Again, this is only for developers' reference. Normal users do not necessarily do this themselves.
 
