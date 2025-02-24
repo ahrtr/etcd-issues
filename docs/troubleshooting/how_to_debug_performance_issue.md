@@ -180,10 +180,13 @@ You can also compare the memory usage of two versions,
 
 ```
 go tool pprof -base old_version.pb.gz -svg new_version.pb.gz  > diff.svg
+
+# or
+go tool pprof -base old_version.pb.gz -png new_version.pb.gz  > diff.png
 ```
 
 See example below,
-![pprof heap diff](images/pprof_heap_diff.svg)
+![pprof heap diff](images/pprof_heap_diff.png)
 
 
 ## Note: memory may be related to db file size
