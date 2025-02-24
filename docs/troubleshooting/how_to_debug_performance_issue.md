@@ -157,10 +157,10 @@ Execute one of the following commands to collect heap profile,
 
 ```
 # You only need to install golang to run this command.
-$ go tool pprof http://10.168.215.196:2379/debug/pprof/heap
+$ go tool pprof http://10.168.215.196:2379/debug/pprof/heap?seconds=30
 
 # You need to install `github.com/google/pprof` to run this command. 
-$ pprof http://10.168.215.196:2379/debug/pprof/heap    
+$ pprof http://10.168.215.196:2379/debug/pprof/heap?seconds=30
 ```
 
 A heap profile file something like `${HOME}/pprof/pprof.etcd.alloc_objects.alloc_space.inuse_objects.inuse_space.001.pb.gz`
@@ -175,6 +175,16 @@ $ pprof -http=:8080 pprof.etcd.alloc_objects.alloc_space.inuse_objects.inuse_spa
 The WebUI will be opened automatically when executing commands above. You can easily tell which steps consume most of the heap space. 
 Afterwards, you can view Top, Graph(defaults), Frame Graph, Peek and Source.
 ![pprof heap graph](images/pprof_heap_graph.png)
+
+You can also compare the memory usage of two versions,
+
+```
+go tool pprof -base old_version.pb.gz -svg new_version.pb.gz  > diff.svg
+```
+
+See example below,
+![pprof heap diff](images/pprof_heap_diff.svg)
+
 
 ## Note: memory may be related to db file size
 BoltDB maps the db file into memory directly, so the larger the db file, the more memory usage. Please read [how_to_debug_large_db_size_issue](how_to_debug_large_db_size_issue.md).
