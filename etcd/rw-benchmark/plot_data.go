@@ -334,22 +334,22 @@ func renderChart(page *components.Page, ratio float64, valueSize uint64, conns [
 		charts.WithXAxisOpts(opts.XAxis{
 			Name: "Connections",
 		}),
-		charts.WithTooltipOpts(opts.Tooltip{Show: true}),
+		charts.WithTooltipOpts(opts.Tooltip{Show: boolPtr(true)}),
 		charts.WithLegendOpts(opts.Legend{
-			Show:   true,
+			Show:   boolPtr(true),
 			Orient: "vertical",
 			Left:   "right",
 			Top:    "middle",
 		}),
 		charts.WithToolboxOpts(opts.Toolbox{
-			Show:   true,
+			Show:   boolPtr(true),
 			Orient: "horizontal",
 			Right:  "100",
 			Feature: &opts.ToolBoxFeature{
 				SaveAsImage: &opts.ToolBoxFeatureSaveAsImage{
-					Show: true, Title: "Save as image"},
+					Show: boolPtr(true), Title: "Save as image"},
 				DataView: &opts.ToolBoxFeatureDataView{
-					Show:  true,
+					Show:  boolPtr(true),
 					Title: "Show as table",
 					Lang:  []string{"Data view", "Turn off", "Refresh"},
 				},
@@ -391,6 +391,10 @@ func renderChart(page *components.Page, ratio float64, valueSize uint64, conns [
 	}
 
 	page.AddCharts(line)
+}
+
+func boolPtr(v bool) *bool {
+	return &v
 }
 
 // renderPage renders all data in one HTML page, which may contain multiple

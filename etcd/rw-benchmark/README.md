@@ -1,11 +1,11 @@
 # etcd/tools/rw-benchmark
 
-`etcd/tools/rw-benchmark` is the mixed read/write performance evaluation tool for etcd clusters.
+`rw-benchmark` is a tool to visualize the etcd's rw-benchmark evaluation reports.
 
 ## Execute
 
 ### Benchmark
-To get a mixed read/write performance evaluation result:
+To get a mixed read/write performance evaluation result, you need to run etcd's rw-benchmark.sh script,
 ```sh
 # run with default configurations and specify the working directory
 ./rw-benchmark.sh -w ${WORKING_DIR}
