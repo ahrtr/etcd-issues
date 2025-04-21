@@ -40,7 +40,7 @@ Run load test on an etcd cluster, and in the meanwhile occasionally kill the mem
 It's important to have a powerful machine (especially a fast disk, i.e. SSD). Please 
 take a look at [13766#issuecomment-1078897588](https://github.com/etcd-io/etcd/issues/13766#issuecomment-1078897588).
 
-Please note that the flag `--experimental-initial-corrupt-check` might not defect the data inconsistent issue, because 
+Please note that the flag `--experimental-initial-corrupt-check` might not be able to detect the data inconsistent issue, because
 the current implementation has flaw. etcd only compares the two members' data when they have the same revision, but when 
 this issue is reproduced, usually they have different revisions. So run command `etcdctl endpoint status -w json` and compare 
 the revisions, see example below,
