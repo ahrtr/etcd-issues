@@ -285,7 +285,7 @@ Disk stats (read/write):
 
 # Network I/O
 Please pay attention to metrics `peer_round_trip_time_seconds` if you suspect the peer communication is slow. Usually it should be < 100ms. 
-If it's single-node cluster, please ignore this metrics.
+If it's single-node cluster, please ignore this metrics. You can also just `ping` between control plane VMs.
 
 ```
 # curl --cacert /path/to/etcdctl-ca.crt --cert /path/to/etcdctl.crt --key /path/to/etcdctl.key https://<IP or FQDN>:2379/metrics | grep peer_round_trip_time_seconds
