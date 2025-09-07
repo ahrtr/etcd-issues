@@ -339,6 +339,9 @@ In this case, you need to figure out the bottleneck firstly per guide above.
 ```
 {"level":"warn","ts":"2022-12-23T05:46:45.510Z","caller":"etcdserver/util.go:166","msg":"apply request took too long","took":"123.279445ms","expected-duration":"100ms","prefix":"read-only range ","request":"key:\"/registry/masterleases/\" range_end:\"/registry/masterleases0\" ","response":"range_response_count:3 size:615"}
 ```
+- For disk I/O latency, refer to [Disk I/O](#disk-io). The simplest way is to search log message "**[slow fdatasync](https://github.com/etcd-io/etcd/blob/16e1fff519eeff66e626dd15fef399ea2b10b9cc/server/storage/wal/wal.go#L816-L820)**" in etcd's log.
+- For network communication latency, refer to [Network I/O](#network-io). Since usually etcd runs in host network, so the simplest way is to **ping** between control plane VMs, and check the round trip time.
+- For CPU or memory usage, refer to [CPU](#cpu) and [Memory](#memory). The simplest way is just to run **`top`**.
 
 Usually there is a related detailed trace info, which can tell you which steps the request took most of the time.
 In the following example, most of the time was used to waiting for the current node to catch up the leader's log,
