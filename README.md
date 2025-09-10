@@ -19,6 +19,7 @@ Click [here](issues) to view the complete list of issues.
 - **[Highlights 2023 Q1](docs/highlights_2023_q1.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2023-04-05)</span>
 - **[Highlights 2023 Q2](docs/highlights_2023_q2.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2023-08-07)</span>
 - **[Highlights 2023 Q3 & Q4](docs/highlights_2023_q3_q4.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2023-12-25)</span>
+- **[etcd peer to peer communication workflow](docs/etcd_peer_to_peer_communication_workflow.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2025-09-10)</span>
 
 # [Troubleshooting guide](docs/troubleshooting/README.md)
 - **[How to debug large db size issue?](docs/troubleshooting/how_to_debug_large_db_size_issue.md)** <span style="color: #808080; font-family: Babas; font-size: 1em;">(2022-11-17)</span>
