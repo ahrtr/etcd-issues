@@ -1,0 +1,17 @@
+{
+  "size": 3,
+  "upgradePath": [
+    {
+      "version": "v3.5.19",
+      "path": "/usr/local/bin/etcd-v3.5.19"
+    },
+    {
+      "version": "v3.5.21",
+      "path": "/usr/local/bin/etcd-v3.5.21"
+    },
+    {
+      "version": "v3.6.4",
+      "path": "/usr/local/bin/etcd-v3.6.4"
+    }
+  ]
+}
