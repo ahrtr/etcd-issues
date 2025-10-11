@@ -28,7 +28,7 @@ Just three steps to run the demo.
 
 - Step 2: download the etcd versions from [etcd/releases](https://github.com/etcd-io/etcd/releases),
   and put them to the directories configured in above `config.json`.
-- Start the demo,
+- Step 3: start the demo,
 ```
 ./upgradeDemo
 ```
