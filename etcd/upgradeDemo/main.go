@@ -18,10 +18,13 @@ const (
 var (
 	members       []*pb.Member
 	removedMember *pb.Member
+
+	snapshotCount *int
 )
 
 func main() {
 	cfgPath := flag.String("f", "config.json", "path to config file")
+	snapshotCount = flag.Int("snapshot-count", 50, "umber of committed transactions to trigger a snapshot to disk")
 	flag.Parse()
 
 	cfg, err := loadConfig(*cfgPath)

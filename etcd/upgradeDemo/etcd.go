@@ -42,6 +42,10 @@ func startEtcd(binPath string, round, idx int) error {
 		args = append(args, "--initial-cluster-state=existing")
 	}
 
+	if snapshotCount != nil {
+		args = append(args, fmt.Sprintf("--snapshot-count=%d", *snapshotCount))
+	}
+
 	var output bytes.Buffer
 	if err := executeCmd(etcdPath, args, &output, false); err != nil {
 		return err
