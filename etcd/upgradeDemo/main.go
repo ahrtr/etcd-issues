@@ -29,15 +29,15 @@ func main() {
 		log.Fatalf("failed to load config: %v", err)
 	}
 
-	log.Printf("Start to test, cluster size: %d", cfg.Size)
+	log.Printf("Start to test, cluster size: %d", cfg.ClusterSize)
 
 	for i, v := range cfg.UpgradePath {
 		if i == 0 {
-			if err := createInitialCluster(cfg.Size, v); err != nil {
+			if err := createInitialCluster(cfg.ClusterSize, v); err != nil {
 				log.Fatalf("failed to create initial cluster: %v", err)
 			}
 		} else {
-			if err := rollingUpgrade(cfg.Size, i, v); err != nil {
+			if err := rollingUpgrade(cfg.ClusterSize, i, v); err != nil {
 				log.Fatalf("failed during upgrade: %v", err)
 			}
 		}

@@ -7,7 +7,7 @@ Just three steps to run the demo.
 - Step 1: configure the config.json, see example below,
 ```
 {
-  "size": 3,
+  "clusterSize": 3,
   "upgradePath": [
     {
       "version": "v3.5.19",

@@ -10,7 +10,7 @@ import (
 Example:
 
 {
-  "size": 3,
+  "clusterSize": 3,
   "upgradePath": [
     {
       "version": "v3.5.19",
@@ -29,7 +29,7 @@ Example:
 */
 
 type config struct {
-	Size        int               `json:"size"`
+	ClusterSize int               `json:"clusterSize"`
 	UpgradePath []versionWithPath `json:"upgradePath"`
 }
 

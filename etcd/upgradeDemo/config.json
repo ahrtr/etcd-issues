@@ -1,5 +1,5 @@
 {
-  "size": 3,
+  "clusterSize": 3,
   "upgradePath": [
     {
       "version": "v3.5.19",
