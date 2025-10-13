@@ -71,6 +71,7 @@ func createInitialCluster(clusterSize int, v versionWithPath) error {
 			}
 			mustSaveMemberList(v.BinPath)
 		}
+		fmt.Println()
 	}
 	log.Printf("Successfully created initial cluster with version %s of size %d", v.Version, clusterSize)
 	return nil
@@ -81,8 +82,9 @@ func rollingUpgrade(clusterSize int, round int, v versionWithPath) error {
 	members2Remove := append([]*pb.Member{}, members...)
 	log.Printf("Upgrading cluster to version %s, round: %d\n", v.Version, round)
 	for i := 0; i < clusterSize; i++ {
+		oldMember := members2Remove[i]
 		newMemberName := fmt.Sprintf("etcd-%d", round*10+i)
-		log.Printf("rolling replace member (%s: %x) to %s with version %s", members[0].Name, members[0].ID, newMemberName, v.Version)
+		log.Printf("rolling replace member (%s: %x) to %s with version %s", oldMember.Name, oldMember.ID, newMemberName, v.Version)
 
 		// boot a new member
 		if err := bootNewMember(round, i, v); err != nil {
@@ -90,15 +92,16 @@ func rollingUpgrade(clusterSize int, round int, v versionWithPath) error {
 		}
 
 		// remove the old member
-		member2Remove := members2Remove[i]
-		removedMember = member2Remove
-		log.Printf("Removing member (%d, %d) %s: %x", round, i, member2Remove.Name, member2Remove.ID)
-		if err := removeMember(ctl, member2Remove.ID); err != nil {
+		removedMember = oldMember
+		log.Printf("Removing member (%d, %d) %s: %x", round, i, oldMember.Name, oldMember.ID)
+		if err := removeMember(ctl, oldMember.ID); err != nil {
 			return fmt.Errorf("failed to remove a member (%d, %d): %v", round, i, err)
 		}
 		time.Sleep(5 * time.Second)
 
 		mustSaveMemberList(v.BinPath)
+
+		fmt.Println()
 	}
 	log.Printf("Successfully upgraded cluster to version %s, round: %d\n", v.Version, round)
 	return nil

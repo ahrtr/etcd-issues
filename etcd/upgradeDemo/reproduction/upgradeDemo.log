@@ -1,0 +1,108 @@
+2025/10/13 18:59:01 Start to test, cluster size: 3
+2025/10/13 18:59:01 Creating initial cluster with version v3.5.19, cluster size 3
+2025/10/13 18:59:01 Starting the very first member with version: v3.5.19
+2025/10/13 18:59:01 Executing /Users/wachao/software/etcd-v3.5.19-darwin-arm64/etcd, args: [--name=etcd-0 --data-dir=data-etcd-0 --listen-peer-urls=http://127.0.0.1:12380 --listen-client-urls=http://127.0.0.1:2379 --advertise-client-urls=http://127.0.0.1:2379 --initial-advertise-peer-urls=http://127.0.0.1:12380 --log-outputs=log-etcd-0 --initial-cluster=etcd-0=http://127.0.0.1:12380 --initial-cluster-state=new --snapshot-count=50]
+2025/10/13 18:59:01 Running sanity test on the new etcd instance (etcd-0: http://127.0.0.1:2379/version)
+2025/10/13 18:59:01 failed to GET http://127.0.0.1:2379/version: Get "http://127.0.0.1:2379/version": dial tcp 127.0.0.1:2379: connect: connection refused
+2025/10/13 18:59:02 Sanity test on new etcd instance (etcd-0: http://127.0.0.1:2379/version) is successful, response: {"etcdserver":"3.5.19","etcdcluster":"3.5.0"}
+2025/10/13 18:59:02 Executing /Users/wachao/software/etcd-v3.5.19-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2379 member list -w json]
+
+2025/10/13 18:59:02 Adding learner (0, 1) etcd-1:http://127.0.0.1:12381
+2025/10/13 18:59:02 Executing /Users/wachao/software/etcd-v3.5.19-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2379 member add etcd-1 --peer-urls http://127.0.0.1:12381 --learner -w json]
+2025/10/13 18:59:02 Starting learner (0, 1) etcd-1
+2025/10/13 18:59:02 Executing /Users/wachao/software/etcd-v3.5.19-darwin-arm64/etcd, args: [--name=etcd-1 --data-dir=data-etcd-1 --listen-peer-urls=http://127.0.0.1:12381 --listen-client-urls=http://127.0.0.1:2380 --advertise-client-urls=http://127.0.0.1:2380 --initial-advertise-peer-urls=http://127.0.0.1:12381 --log-outputs=log-etcd-1 --initial-cluster=etcd-1=http://127.0.0.1:12381,etcd-0=http://127.0.0.1:12380 --initial-cluster-state=existing --snapshot-count=50]
+2025/10/13 18:59:02 Running sanity test on the new etcd instance (etcd-1: http://127.0.0.1:2380/version)
+2025/10/13 18:59:02 failed to GET http://127.0.0.1:2380/version: Get "http://127.0.0.1:2380/version": dial tcp 127.0.0.1:2380: connect: connection refused
+2025/10/13 18:59:03 Sanity test on new etcd instance (etcd-1: http://127.0.0.1:2380/version) is successful, response: {"etcdserver":"3.5.19","etcdcluster":"3.5.0"}
+2025/10/13 18:59:08 Promoting learner (0, 1) etcd-1
+2025/10/13 18:59:08 Executing /Users/wachao/software/etcd-v3.5.19-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2379 member promote 6d24b40aee2e6ebf]
+2025/10/13 18:59:08 member etcd-1 promoted
+2025/10/13 18:59:13 Executing /Users/wachao/software/etcd-v3.5.19-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2379 member list -w json]
+
+2025/10/13 18:59:13 Adding learner (0, 2) etcd-2:http://127.0.0.1:12382
+2025/10/13 18:59:13 Executing /Users/wachao/software/etcd-v3.5.19-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2380 member add etcd-2 --peer-urls http://127.0.0.1:12382 --learner -w json]
+2025/10/13 18:59:13 Starting learner (0, 2) etcd-2
+2025/10/13 18:59:13 Executing /Users/wachao/software/etcd-v3.5.19-darwin-arm64/etcd, args: [--name=etcd-2 --data-dir=data-etcd-2 --listen-peer-urls=http://127.0.0.1:12382 --listen-client-urls=http://127.0.0.1:2381 --advertise-client-urls=http://127.0.0.1:2381 --initial-advertise-peer-urls=http://127.0.0.1:12382 --log-outputs=log-etcd-2 --initial-cluster=etcd-2=http://127.0.0.1:12382,etcd-1=http://127.0.0.1:12381,etcd-0=http://127.0.0.1:12380 --initial-cluster-state=existing --snapshot-count=50]
+2025/10/13 18:59:13 Running sanity test on the new etcd instance (etcd-2: http://127.0.0.1:2381/version)
+2025/10/13 18:59:13 failed to GET http://127.0.0.1:2381/version: Get "http://127.0.0.1:2381/version": dial tcp 127.0.0.1:2381: connect: connection refused
+2025/10/13 18:59:14 Sanity test on new etcd instance (etcd-2: http://127.0.0.1:2381/version) is successful, response: {"etcdserver":"3.5.19","etcdcluster":"3.5.0"}
+2025/10/13 18:59:19 Promoting learner (0, 2) etcd-2
+2025/10/13 18:59:19 Executing /Users/wachao/software/etcd-v3.5.19-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2380 member promote 4bc85ba8438ca26]
+2025/10/13 18:59:19 member etcd-2 promoted
+2025/10/13 18:59:25 Executing /Users/wachao/software/etcd-v3.5.19-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2380 member list -w json]
+
+2025/10/13 18:59:25 Successfully created initial cluster with version v3.5.19 of size 3
+2025/10/13 18:59:25 Writing some data
+--------------------------------------------------
+
+2025/10/13 18:59:28 Upgrading cluster to version v3.5.21, round: 1
+2025/10/13 18:59:28 rolling replace member (etcd-2: 4bc85ba8438ca26) to etcd-10 with version v3.5.21
+2025/10/13 18:59:28 Adding learner (1, 0) etcd-10:http://127.0.0.1:12390
+2025/10/13 18:59:28 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2381 member add etcd-10 --peer-urls http://127.0.0.1:12390 --learner -w json]
+2025/10/13 18:59:28 Starting learner (1, 0) etcd-10
+2025/10/13 18:59:28 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcd, args: [--name=etcd-10 --data-dir=data-etcd-10 --listen-peer-urls=http://127.0.0.1:12390 --listen-client-urls=http://127.0.0.1:2389 --advertise-client-urls=http://127.0.0.1:2389 --initial-advertise-peer-urls=http://127.0.0.1:12390 --log-outputs=log-etcd-10 --initial-cluster=etcd-10=http://127.0.0.1:12390,etcd-2=http://127.0.0.1:12382,etcd-1=http://127.0.0.1:12381,etcd-0=http://127.0.0.1:12380 --initial-cluster-state=existing --snapshot-count=50]
+2025/10/13 18:59:28 Running sanity test on the new etcd instance (etcd-10: http://127.0.0.1:2389/version)
+2025/10/13 18:59:28 failed to GET http://127.0.0.1:2389/version: Get "http://127.0.0.1:2389/version": dial tcp 127.0.0.1:2389: connect: connection refused
+2025/10/13 18:59:29 Sanity test on new etcd instance (etcd-10: http://127.0.0.1:2389/version) is successful, response: {"etcdserver":"3.5.21","etcdcluster":"3.5.0"}
+2025/10/13 18:59:34 Promoting learner (1, 0) etcd-10
+2025/10/13 18:59:34 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2381 member promote b2efec219177a0ce]
+2025/10/13 18:59:34 member etcd-10 promoted
+2025/10/13 18:59:39 Removing member (1, 0) etcd-2: 4bc85ba8438ca26
+2025/10/13 18:59:39 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2380 member remove 4bc85ba8438ca26]
+2025/10/13 18:59:44 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2380 member list -w json]
+
+2025/10/13 18:59:44 rolling replace member (etcd-1: 6d24b40aee2e6ebf) to etcd-11 with version v3.5.21
+2025/10/13 18:59:44 Adding learner (1, 1) etcd-11:http://127.0.0.1:12391
+2025/10/13 18:59:44 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2380 member add etcd-11 --peer-urls http://127.0.0.1:12391 --learner -w json]
+2025/10/13 18:59:44 Starting learner (1, 1) etcd-11
+2025/10/13 18:59:44 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcd, args: [--name=etcd-11 --data-dir=data-etcd-11 --listen-peer-urls=http://127.0.0.1:12391 --listen-client-urls=http://127.0.0.1:2390 --advertise-client-urls=http://127.0.0.1:2390 --initial-advertise-peer-urls=http://127.0.0.1:12391 --log-outputs=log-etcd-11 --initial-cluster=etcd-11=http://127.0.0.1:12391,etcd-1=http://127.0.0.1:12381,etcd-10=http://127.0.0.1:12390,etcd-0=http://127.0.0.1:12380 --initial-cluster-state=existing --snapshot-count=50]
+2025/10/13 18:59:44 Running sanity test on the new etcd instance (etcd-11: http://127.0.0.1:2390/version)
+2025/10/13 18:59:44 failed to GET http://127.0.0.1:2390/version: Get "http://127.0.0.1:2390/version": dial tcp 127.0.0.1:2390: connect: connection refused
+2025/10/13 18:59:45 Sanity test on new etcd instance (etcd-11: http://127.0.0.1:2390/version) is successful, response: {"etcdserver":"3.5.21","etcdcluster":"3.5.0"}
+2025/10/13 18:59:50 Promoting learner (1, 1) etcd-11
+2025/10/13 18:59:50 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2380 member promote 25e2534aae1870bf]
+2025/10/13 18:59:50 member etcd-11 promoted
+2025/10/13 18:59:55 Removing member (1, 1) etcd-1: 6d24b40aee2e6ebf
+2025/10/13 18:59:55 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2389 member remove 6d24b40aee2e6ebf]
+2025/10/13 19:00:00 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2389 member list -w json]
+
+2025/10/13 19:00:00 rolling replace member (etcd-0: ddd67b312462fd7b) to etcd-12 with version v3.5.21
+2025/10/13 19:00:00 Adding learner (1, 2) etcd-12:http://127.0.0.1:12392
+2025/10/13 19:00:00 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2390 member add etcd-12 --peer-urls http://127.0.0.1:12392 --learner -w json]
+2025/10/13 19:00:00 Starting learner (1, 2) etcd-12
+2025/10/13 19:00:00 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcd, args: [--name=etcd-12 --data-dir=data-etcd-12 --listen-peer-urls=http://127.0.0.1:12392 --listen-client-urls=http://127.0.0.1:2391 --advertise-client-urls=http://127.0.0.1:2391 --initial-advertise-peer-urls=http://127.0.0.1:12392 --log-outputs=log-etcd-12 --initial-cluster=etcd-12=http://127.0.0.1:12392,etcd-11=http://127.0.0.1:12391,etcd-10=http://127.0.0.1:12390,etcd-0=http://127.0.0.1:12380 --initial-cluster-state=existing --snapshot-count=50]
+2025/10/13 19:00:00 Running sanity test on the new etcd instance (etcd-12: http://127.0.0.1:2391/version)
+2025/10/13 19:00:00 failed to GET http://127.0.0.1:2391/version: Get "http://127.0.0.1:2391/version": dial tcp 127.0.0.1:2391: connect: connection refused
+2025/10/13 19:00:01 Sanity test on new etcd instance (etcd-12: http://127.0.0.1:2391/version) is successful, response: {"etcdserver":"3.5.21","etcdcluster":"3.5.0"}
+2025/10/13 19:00:06 Promoting learner (1, 2) etcd-12
+2025/10/13 19:00:06 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2390 member promote c147fe083a74e7db]
+2025/10/13 19:00:06 member etcd-12 promoted
+2025/10/13 19:00:11 Removing member (1, 2) etcd-0: ddd67b312462fd7b
+2025/10/13 19:00:11 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2390 member remove ddd67b312462fd7b]
+2025/10/13 19:00:16 Executing /Users/wachao/software/etcd-v3.5.21-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2390 member list -w json]
+
+2025/10/13 19:00:16 Successfully upgraded cluster to version v3.5.21, round: 1
+2025/10/13 19:00:16 Writing some data
+--------------------------------------------------
+
+2025/10/13 19:00:19 Upgrading cluster to version v3.6.4, round: 2
+2025/10/13 19:00:19 rolling replace member (etcd-11: 25e2534aae1870bf) to etcd-20 with version v3.6.4
+2025/10/13 19:00:19 Adding learner (2, 0) etcd-20:http://127.0.0.1:12400
+2025/10/13 19:00:19 Executing /Users/wachao/software/etcd-v3.6.4-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2390 member add etcd-20 --peer-urls http://127.0.0.1:12400 --learner -w json]
+2025/10/13 19:00:19 Starting learner (2, 0) etcd-20
+2025/10/13 19:00:19 Executing /Users/wachao/software/etcd-v3.6.4-darwin-arm64/etcd, args: [--name=etcd-20 --data-dir=data-etcd-20 --listen-peer-urls=http://127.0.0.1:12400 --listen-client-urls=http://127.0.0.1:2399 --advertise-client-urls=http://127.0.0.1:2399 --initial-advertise-peer-urls=http://127.0.0.1:12400 --log-outputs=log-etcd-20 --initial-cluster=etcd-20=http://127.0.0.1:12400,etcd-11=http://127.0.0.1:12391,etcd-10=http://127.0.0.1:12390,etcd-12=http://127.0.0.1:12392 --initial-cluster-state=existing --snapshot-count=50]
+2025/10/13 19:00:19 Running sanity test on the new etcd instance (etcd-20: http://127.0.0.1:2399/version)
+2025/10/13 19:00:19 failed to GET http://127.0.0.1:2399/version: Get "http://127.0.0.1:2399/version": dial tcp 127.0.0.1:2399: connect: connection refused
+2025/10/13 19:00:20 Sanity test on new etcd instance (etcd-20: http://127.0.0.1:2399/version) is successful, response: {"etcdserver":"3.6.4","etcdcluster":"3.5.0","storage":"3.5.0"}
+2025/10/13 19:00:25 Promoting learner (2, 0) etcd-20
+2025/10/13 19:00:25 Executing /Users/wachao/software/etcd-v3.6.4-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2390 member promote 17fe58ac547b2c7d]
+2025/10/13 19:00:26 member etcd-20 promoted
+2025/10/13 19:00:31 Removing member (2, 0) etcd-11: 25e2534aae1870bf
+2025/10/13 19:00:31 Executing /Users/wachao/software/etcd-v3.6.4-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2389 member remove 25e2534aae1870bf]
+2025/10/13 19:00:36 Executing /Users/wachao/software/etcd-v3.6.4-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2389 member list -w json]
+
+2025/10/13 19:00:36 rolling replace member (etcd-10: b2efec219177a0ce) to etcd-21 with version v3.6.4
+2025/10/13 19:00:36 Adding learner (2, 1) etcd-21:http://127.0.0.1:12401
+2025/10/13 19:00:36 Executing /Users/wachao/software/etcd-v3.6.4-darwin-arm64/etcdctl, args: [--endpoints=http://127.0.0.1:2399 member add etcd-21 --peer-urls http://127.0.0.1:12401 --learner -w json]
+2025/10/13 19:00:36 failed during upgrade: failed to boot a new member (2, 1): failed to add learner: add learner (etcd-21) failed: exit status 1, output: {"level":"warn","ts":"2025-10-13T19:00:36.220883+0100","logger":"etcd-client","caller":"v3@v3.6.4/retry_interceptor.go:65","msg":"retrying of unary invoker failed","target":"etcd-endpoints://0x140002a54a0/127.0.0.1:2399","method":"/etcdserverpb.Cluster/MemberAdd","attempt":0,"error":"rpc error: code = FailedPrecondition desc = etcdserver: too many learner members in cluster"}
+Error: etcdserver: too many learner members in cluster

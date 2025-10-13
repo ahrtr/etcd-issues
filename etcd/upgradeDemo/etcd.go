@@ -20,6 +20,7 @@ func startEtcd(binPath string, round, idx int) error {
 	etcdPath := filepath.Join(binPath, "etcd")
 	name := fmt.Sprintf("etcd-%d", round*10+idx)
 	dataDir := fmt.Sprintf("data-%s", name)
+	logFile := fmt.Sprintf("log-%s", name)
 	if err := os.MkdirAll(dataDir, 0755); err != nil {
 		log.Fatalf("failed to create data dir (%s): %v", dataDir, err)
 	}
@@ -33,6 +34,7 @@ func startEtcd(binPath string, round, idx int) error {
 		fmt.Sprintf("--listen-client-urls=%s", clientURL),
 		fmt.Sprintf("--advertise-client-urls=%s", clientURL),
 		fmt.Sprintf("--initial-advertise-peer-urls=%s", peerURL),
+		fmt.Sprintf("--log-outputs=%s", logFile),
 	}
 
 	args = append(args, fmt.Sprintf("--initial-cluster=%s", initialCluster(globalIdx)))
