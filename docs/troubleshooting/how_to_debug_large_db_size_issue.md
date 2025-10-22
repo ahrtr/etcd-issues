@@ -288,7 +288,7 @@ The other solution is to set per-resource etcd servers overrides using apiserver
 In the following example, there are two etcd clusters; one for the normal usage, and the other dedicated to events.
 ```
 --etcd-servers="https://etcd-0:2379,https://etcd-1:2379,https://etcd-2:2379" \
---etcd-servers-overrides="/events#https://etcd-3:2379,https://etcd-4:2379,https://etcd-5:2379"
+--etcd-servers-overrides="/events#https://etcd-3:2379;https://etcd-4:2379;https://etcd-5:2379"
 ```
 
 If the behavior (db size exceeds the quota) isn't expected, then you'd better figure out the root cause and resolve
