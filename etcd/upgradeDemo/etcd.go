@@ -48,6 +48,10 @@ func startEtcd(binPath string, round, idx int) error {
 		args = append(args, fmt.Sprintf("--snapshot-count=%d", *snapshotCount))
 	}
 
+	if debug != nil && *debug {
+		args = append(args, "--log-level=debug")
+	}
+
 	var output bytes.Buffer
 	if err := executeCmd(etcdPath, args, &output, false); err != nil {
 		return err
