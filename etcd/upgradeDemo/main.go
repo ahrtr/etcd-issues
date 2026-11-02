@@ -20,11 +20,15 @@ var (
 	removedMember *pb.Member
 
 	snapshotCount *int
+	keyCount      *int
+	debug         *bool
 )
 
 func main() {
 	cfgPath := flag.String("f", "config.json", "path to config file")
-	snapshotCount = flag.Int("snapshot-count", 50, "umber of committed transactions to trigger a snapshot to disk")
+	snapshotCount = flag.Int("snapshot-count", 0, "umber of committed transactions to trigger a snapshot to disk")
+	keyCount = flag.Int("key-count", 100, "number of keys to write after each upgrade")
+	debug = flag.Bool("debug", false, "if set, start etcd instances with --log-level=debug")
 	flag.Parse()
 
 	cfg, err := loadConfig(*cfgPath)
@@ -157,9 +161,9 @@ func printSeparator() {
 }
 
 func writeData(binPath string) error {
-	log.Println("Writing some data")
+	log.Printf("Writing %d keys", *keyCount)
 	ctl := filepath.Join(binPath, "etcdctl")
-	for i := 0; i < 100; i++ {
+	for i := 0; i < *keyCount; i++ {
 		key := fmt.Sprintf("key-%04d", i)
 		value := fmt.Sprintf("value-%04d", i)
 		if err := writeRecord(ctl, key, value); err != nil {

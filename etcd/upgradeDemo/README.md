@@ -1,6 +1,7 @@
 UpgradeDemo
 ======
 
+## How it works
 The upgrade demo follows exactly the same way as how cluster-api upgrades Kubernetes clusters.
 
 Just three steps to run the demo.
@@ -31,4 +32,24 @@ Just three steps to run the demo.
 - Step 3: start the demo,
 ```
 ./upgradeDemo
+```
+
+## History issues
+
+1. Too many learner members
+
+Refer to https://etcd.io/blog/2025/upgrade_from_3.5_to_3.6_issue_followup/
+
+Run command below to reproduce the issue,
+```
+./upgradeDemo -f config.json --snapshot-count=50
+```
+
+2. v3.7.x panicking on bootstrap
+
+refer to https://github.com/etcd-io/etcd/issues/22633
+
+Run command below to reproduce the issue,
+```
+./upgradeDemo -f config2.json --key-count=10
 ```
